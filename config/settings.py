@@ -33,14 +33,11 @@ INSTALLED_APPS = [
 
     "todo",
     "graphene_django",
-    "graphql_auth",
-    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
     "corsheaders",
     'channels',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,8 +69,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 WSGI_APPLICATION = 'config.wsgi.application'
 ASGI_APPLICATION ='config.router.application'
-
-CORS_ALLOW_ALL_ORIGINS = True
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -128,32 +123,32 @@ USE_TZ = True
 
 GRAPHENE = {
     "SCHEMA": "todo.schemas.schema",
-    'MIDDLEWARE': [
-        'graphql_jwt.middleware.JSONWebTokenMiddleware',
-    ],
+    # 'MIDDLEWARE': [
+    #     'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    # ],
 }
 
-GRAPHQL_JWT = {
-    'JWT_VERIFY_EXPIRATION': True,
-    'JWT_LONG_RUNNING_REFRESH_TOKEN': True,
-    'JWT_EXPIRATION_DELTA':timedelta(minutes=30),
-    'JWT_REFRESH_EXPIRATION_DETLA':timedelta(days=7),
-    "JWT_ALLOW_ANY_CLASSES": [
-        "graphql_auth.mutations.Register",
-        "graphql_auth.mutations.VerifyAccount",
-        "graphql_auth.mutations.ResendActivationEmail",
-        "graphql_auth.mutations.SendPasswordResetEmail",
-        "graphql_auth.mutations.PasswordReset",
-        "graphql_auth.mutations.ObtainJSONWebToken",
-        "graphql_auth.mutations.VerifyToken",
-        "graphql_auth.mutations.RefreshToken",
-        "graphql_auth.mutations.RevokeToken",
-        "graphql_auth.mutations.VerifySecondaryEmail",
-    ],
-}
+# GRAPHQL_JWT = {
+#     'JWT_VERIFY_EXPIRATION': True,
+#     'JWT_LONG_RUNNING_REFRESH_TOKEN': True,
+#     'JWT_EXPIRATION_DELTA':timedelta(minutes=30),
+#     'JWT_REFRESH_EXPIRATION_DETLA':timedelta(days=7),
+#     "JWT_ALLOW_ANY_CLASSES": [
+#         "graphql_auth.mutations.Register",
+#         "graphql_auth.mutations.VerifyAccount",
+#         "graphql_auth.mutations.ResendActivationEmail",
+#         "graphql_auth.mutations.SendPasswordResetEmail",
+#         "graphql_auth.mutations.PasswordReset",
+#         "graphql_auth.mutations.ObtainJSONWebToken",
+#         "graphql_auth.mutations.VerifyToken",
+#         "graphql_auth.mutations.RefreshToken",
+#         "graphql_auth.mutations.RevokeToken",
+#         "graphql_auth.mutations.VerifySecondaryEmail",
+#     ],
+# }
 
 AUTHENTICATION_BACKENDS = [
-    'graphql_jwt.backends.JSONWebTokenBackend',
+    # 'graphql_jwt.backends.JSONWebTokenBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
