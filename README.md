@@ -1,5 +1,6 @@
 # todo-back
 This is for testing Django websocket
+
 python -m venv venv
 source venv/bin/activate
 
